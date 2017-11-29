@@ -10,7 +10,7 @@
       }
     },
     "variables": {
-        "repoUri" : "https://github.com/newjisu/azureStudy/blob/master/homework01/01Shared/"
+        "repoUri" : "https://raw.githubusercontent.com/newjisu/azureStudy/master/homework01/01Shared/"
     },
     "resources": [
         {
