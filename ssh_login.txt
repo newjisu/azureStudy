@@ -1,0 +1,34 @@
+[11/21]
+ssh-keygen -t rsa -b 4096 -C euseo@ebay.com -f ~/.ssh/euseo_ebay.com
+ssh-keygen -t rsa -b 4096 -f ~/.ssh/pb_euseo_ebay.com
+
+az group create --name newjisuRG01 --location “Korea Central”
+az group delete --name newjisuRG01
+
+ssh euseo@52.231.24.188 -i ~/.ssh/euseo_ebay.com
+
+ssh euseo@52.231.26.100 -i ~/.ssh/euseo_ebay.com
+
+공용 IP 주소
+52.231.26.100
+
+netstat -an|grep 168.63.129* <-ms network peering
+
+ebayguest network으로 접속할것.
+
+$pwd
+$cd ~/.ssh
+$ls -al
+
+
+Host github github.com
+    HostName github.com
+    IdentityFile ~/.ssh/pb_euseo_ebay.com # private key for realname
+    User remoteusername
+
+Host ebaykoreagithub github.ebaykorea.com
+    HostName github.ebaykorea.com
+    IdentityFile ~/.ssh/euseo_ebay.com # private key for realname
+    User remoteusername 
+
+

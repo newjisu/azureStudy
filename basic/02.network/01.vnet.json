@@ -14,12 +14,14 @@
             "name": "[parameters('vnet_name')]",
             "apiVersion": "2017-06-01",
             "location": "koreacentral",
-            "tags": {},
+            "tags": {
+                "department" : "DB실"
+            },
             "scale": null,
             "properties": {
                 "addressSpace": {
                     "addressPrefixes": [
-                        "10.0.0.0/16"
+                        "10.8.0.0/16"
                     ]
                 },
                 "subnets": [],

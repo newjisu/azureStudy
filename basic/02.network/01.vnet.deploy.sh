@@ -9,6 +9,7 @@ IFS=$'\n\t'
 usage() { echo "Usage: $0 -i <subscriptionId> -g <resourceGroupName> -n <deploymentName> -l <resourceGroupLocation>" 1>&2; exit 1; }
 
 declare subscriptionId="7b13dc94-2b54-4cdf-a247-bbdebdb97f4f"
+#declare subscriptionId = `az account show |jq -r ".id"`
 declare resourceGroupName=""
 declare deploymentName=""
 declare resourceGroupLocation=""
