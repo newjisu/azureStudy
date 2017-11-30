@@ -23,14 +23,14 @@
                 "addressSpace": {
                     "addressPrefixes": [
                         "10.8.0.0/16",
-			            "192.168.8.0/16"
+			            "192.168.0.0/16"
                     ]
                 },
                 "subnets": [
                     {
                         "name": "testSubnet01",
                         "properties": {
-                            "addressPrefix": "192.168.8.0/24",
+                            "addressPrefix": "192.168.0.0/24",
                             "networkSecurityGroup": {
                                 "id": "[resourceId('Microsoft.Network/networkSecurityGroups', 'DefaultNSG')]"
                             }
