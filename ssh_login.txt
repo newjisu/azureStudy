@@ -32,3 +32,32 @@ Host ebaykoreagithub github.ebaykorea.com
     User remoteusername 
 
 
+ 174  git remote -v
+  175  git status
+  176  git add -A
+  177  git commit -m "HOMEWORK01"
+
+git pb commit  -m "HOMEWORK01"
+  180  git remote -v
+  181  git --help
+  182  git commit -m "homework01"
+  183  git push pb
+
+Username for 'https://github.com': newjisu/ic**12!@
+
+
+01.vnet.json
+"repoUri" : "https://raw.githubusercontent.com/msjo66/azureStudy/master/homework01/01Shared/"
+"repoUri" : "https://raw.githubusercontent.com/newjisu/azureStudy/master/homework01/01Shared/"
+
+https://github.com/newjisu/azureStudy/blob/master/homework01/01Shared/01.vnet.json
+"properties": {
+                "publicIPAddressVersion": "IPv4",
+                "publicIPAllocationMethod": "Dynamic",
+                "idleTimeoutInMinutes": 4,
+                "dnsSettings" :{
+                    "domainNameLabel": "[concat('ip', copyIndex(),'-', toLower(resourceGroup().name))]"
+                }
+            },
+
+cat file|base64
