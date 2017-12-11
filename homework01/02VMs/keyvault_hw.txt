@@ -1,0 +1,146 @@
+az keyvault create --name euseoVault --resource-group minschoVaultRG01
+az keyvault secret set --vault-name 'euseoVault' --name 'euseoPub' --file /home/newjisu/.ssh/pb_euseo_ebay.com.pub
+az keyvault secret list --vault-name euseoVault
+az keyvault secret show --vault-name euseoVault  --name euseoPub
+
+newjisu@L-SEL-16503647:/mnt/c/newjisu_git/homework01/02VMs$ ./00.azuredeploy.sh
+adminUserId :
+euseo
+ResourceGroupName:
+euseoRG02
+deploymentName:
+euseoDeploy02
+Key Vault Resource Group:
+minschoVaultRG01
+Vault Name:
+euseoVault
+secretName which public key resides :
+euseoPub
+Resource group with name euseoRG02 could not be found. Creating new resource group..
++ az group create --name euseoRG02 --location koreacentral
+Starting deployment...
++ az group deployment create --name euseoDeploy02 --resource-group euseoRG02 --template-file 00.azuredeploy.json --parameters @00.azuredeploy.parameters.json --parameters adminUserId=euseo --parameters vaultResourceGroup=minschoVaultRG01 --parameters vaultName=euseoVault --parameters secretName=euseoPub
+
+ssh euseo@52.231.31.241 -i ~/.ssh/pb_euseo_ebay.com
+
+sudo apt-get update && sudo apt-get install software-properties-common ; sudo apt-add-repository ppa:ansible/ansible && sudo apt-get update && sudo apt-get install ansible
+
+* Ansible 동작 테스트
+cat /etc/ansible/hosts
+pwd
+id
+sudo -i
+mkdir ansible/hosts
+touch /etc/ansible/hosts
+chmod ugo+w /etc/ansible/hosts
+ssh-agent -s
+ps -ef|grep ssh-agent
+exit
+pwd
+cd .ssh
+
+$ cat /etc/ansible/hosts
+[webserver]
+52.231.73.104 ansible_ssh_private_key_file=/home/newjisu/.ssh/pb_euseo_ebay.com
+
+eval ”$(ssh-agent -s)” && ssh-add -k ~/.ssh/pb_euseo_ebay.com
+ansible all -m ping
+ansible all -m ping -vvv
+az group delete --name euseoRG02
+
+which ansible
+file /usr/local/bin/ansible
+vi /usr/local/bin/ansible
+
+cd /var/log--실행로그 있음
+
+page.29 HW#3
+
+
+ansible git pull하고, centos로 변경할것.
+
+
+1. 첫번째 오류
+newjisu@L-SEL-16503647:/mnt/c/newjisu_git/ansible/03BasicExamples/01Packaging$ ansible-playbook yumSample.yml
+
+PLAY [webserver] *******************************************************************************************************
+
+TASK [Gathering Facts] *************************************************************************************************
+Enter passphrase for key '/home/newjisu/.ssh/pb_euseo_ebay.com':
+ok: [52.231.73.104]
+
+TASK [install the latest version of Apache] ****************************************************************************
+fatal: [52.231.73.104]: FAILED! => {"changed": false, "msg": "python2 bindings for rpm are needed for this module. python2 yum module is needed for this  module"}
+        to retry, use: --limit @/mnt/c/newjisu_git/ansible/03BasicExamples/01Packaging/yumSample.retry
+
+PLAY RECAP *************************************************************************************************************
+52.231.73.104              : ok=1    changed=0    unreachable=0    failed=1
+
+-> 아래로 해결함
+yum list installed|grep httpd
+sudo apt-get install yum
+
+2. 두번째 오류 -> ebayguest 접속 필요.
+TASK [Gathering Facts] *************************************************************************************************
+fatal: [52.231.73.104]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh: Connection timed out during banner exchange\r\n", "unreachable": true}
+        to retry, use: --limit @/mnt/c/newjisu_git/ansible/03BasicExamples/01Packaging/yumSample.retry
+
+PLAY RECAP *************************************************************************************************************
+52.231.73.104              : ok=0    changed=0    unreachable=1    failed=0
+
+sudo apt-get -y install python-pip python-dev libffi-dev libssl-dev
+
+3. 세번째 오류 : ubuntu -. centeros로 변경
+
+sudo visudo
+cat /etc/sudoers
+
+
+1207 HW3
+ansiblewithARM
+
+12/09
+newjisu@L-SEL-16503647:/mnt/c/newjisu_git/ansible/02vmWithARM$ ./00.azuredeploy.sh
+adminUserId :
+euseo
+ResourceGroupName:
+euseoVmARMRG02
+deploymentName:
+euseoVm02Deploy
+Key Vault Resource Group:
+minschoVaultRG01
+Vault Name:
+euseoVault
+secretName which public key resides :
+euseoPub
+customDataFile name:
+dummy-init.yaml
+Resource group with name euseoVMwithArm01 could not be found. Creating new resource group..
++ az group create --name euseoVMwithArm01 --location koreacentral
+Starting deployment...
+++ az group deployment create --name euseoVMwithArm01Deploy --resource-group euseoVMwithArm01 --template-file 00.azuredeploy.json --parameters @00.azuredeploy.parameters.json --parameters adminUserId=euseo --parameters vaultResourceGroup=minschoVaultRG01 --parameters vaultName=euseoVault --parameters secretName=euseoPub --parameters customData=I2Nsb3VkLWNvbmZpZwo=
+++ jq -r .properties.outputs.pubicIPId.value
+Deployment failed. Correlation ID: e6c277e3-07f5-4694-b321-0ccaf4e04cf1. {
+  "status": "Failed",
+  "error": {
+    "code": "ResourceDeploymentFailure",
+    "message": "The resource operation completed with terminal provisioning state 'Failed'.",
+    "details": [
+      {
+        "code": "DeploymentFailed",
+        "message": "At least one resource deployment operation failed. Please list deployment operations for details. Please see https://aka.ms/arm-debug for usage details.",
+        "details": [
+          {
+            "code": "BadRequest",
+            "message": "{\r\n  \"error\": {\r\n    \"details\": [],\r\n    \"code\": \"NicInUse\",\r\n    \"message\": \"Network Interface vm0nic is used by existing VM /subscriptions/7b13dc94-2b54-4cdf-a247-bbdebdb97f4f/resourceGroups/euseoVmRG02/providers/Microsoft.Compute/virtualMachines/vm0.\"\r\n  }\r\n}"
+          }
+        ]
+      }
+    ]
+  }
+}
++ IP_RES_ID=
+
+여러번의실패..
+Deployment failed. Correlation ID: 77cbc58b-9c47-4967-917f-69dfc8043ada. The template output 'pubicIPId' is not valid: 
+The language expression property 'outputs' doesn't exist, available properties are 'templateLink, templateHash, parameters, mode, provisioningState, timestamp, duration, correlationId, providers, dependencies, outputResources'..
