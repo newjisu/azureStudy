@@ -1,0 +1,42 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "adminUserId": {
+            "value": "minsoojo"
+        },
+        "vaultResourceGroup": {
+            "value": "minschoVaultRG01"
+        },
+        "vaultName": {
+            "value": "euseoVault"
+        },
+        "secretName": {
+            "value": "euseoPub"
+        },
+        "scalesetName": {
+            "value": "mySet01"
+        },
+        "imgRG": {
+            "value": "euseoNetRG01"
+        },
+        "imgName": {
+            "value": "centOSWithCommonTask"
+        },
+        "netRGName": {
+            "value": "euseoNetRG01"
+        },
+        "nicName": {
+            "value": "mynic"
+        },
+        "vnetName": {
+            "value": "euseoVnet01"
+        },
+        "subnetName": {
+            "value": "testSubnet01"
+        },
+        "scalesetDnsName": {
+            "value": "euseoss01"
+        }
+    }
+}
