@@ -4,10 +4,11 @@ ssh-keygen -t rsa -b 4096 -f ~/.ssh/pb_euseo_ebay.com
 
 az group create --name newjisuRG01 --location “Korea Central”
 az group delete --name newjisuRG01
+az group delete --name euseoRG02
 
 ssh euseo@52.231.24.188 -i ~/.ssh/euseo_ebay.com
 
-ssh euseo@52.231.26.100 -i ~/.ssh/euseo_ebay.com
+ssh euseo@52.231.31.44 -i ~/.ssh/euseo_ebay.com
 
 공용 IP 주소
 52.231.26.100
@@ -50,6 +51,10 @@ Username for 'https://github.com': newjisu/ic**12!@
 "repoUri" : "https://raw.githubusercontent.com/msjo66/azureStudy/master/homework01/01Shared/"
 "repoUri" : "https://raw.githubusercontent.com/newjisu/azureStudy/master/homework01/01Shared/"
 
+https://github.com/msjo66/azureStudy/blob/master/homework01/
+http://github.ebaykorea.com/minscho/azureStudy
+http://github.com/msjo66/azureStudy.git
+
 https://github.com/newjisu/azureStudy/blob/master/homework01/01Shared/01.vnet.json
 "properties": {
                 "publicIPAddressVersion": "IPv4",
@@ -61,3 +66,5 @@ https://github.com/newjisu/azureStudy/blob/master/homework01/01Shared/01.vnet.js
             },
 
 cat file|base64
+tenant?
+- multi? 여러 회사에서 공유(ex, 피지컬 레이어) single?
